@@ -1,7 +1,16 @@
 <?php
-    require_once "vendor/connect.php";
-    $products = mysqli_query ($connect, "SELECT * FROM `products`");
-    $products = mysqli_fetch_all ($products);
+session_start();
+
+
+if (!$_SESSION['user']){
+  header('Location: index.php');
+}
+
+require_once "vendor/connect.php";
+$products = mysqli_query ($connect, "SELECT * FROM `products`");
+$products = mysqli_fetch_all ($products);
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,6 +20,7 @@
     
 </head>
 <body>
+  <h2>Добро пожаловать: <?= $_SESSION['user']['name']?></h2>
 <table>
     <tr>
       <th>id</th>
@@ -32,5 +42,6 @@
       }
        ?>
   </table>
+  <a href="vendor/exit.php">Выход</a>
 </body>
 </html>
