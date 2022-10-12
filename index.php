@@ -10,7 +10,7 @@ session_start();
 </head>
 <body>
 
-    <form method="post" action="vendor/sign.php">
+    <form action="vendor/sign.php" method = "post">
         <label>Логин</label>
         <input type="text" name="login">
         <label>Пароль</label>
