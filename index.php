@@ -19,11 +19,11 @@ if ($_SESSION['user']){
 <body>
 
     <form action="vendor/sign.php" method = "post">
-        <label>Логин</label>
+        <label>Логін</label>
         <input type="text" name="login" placeholder='Login'>
         <label>Пароль</label>
         <input type="password" name = "password" placeholder='Password'>
-        <button type="submit">Войти</button>
+        <button type="submit">Увійти</button>
        
     </form>
 </body>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 12 2022 г., 14:16
+-- Время создания: Окт 13 2022 г., 20:51
 -- Версия сервера: 8.0.30
 -- Версия PHP: 7.2.34
 
@@ -39,8 +39,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `title`, `description`, `price`) VALUES
-(1, 'Товар 1', 'Описание 1', 500),
-(2, 'Товар 2 ', 'Описание 2', 100);
+(2, 'Товар 1', 'Опис 1', 1001),
+(3, 'Товар 3', 'Опис 3', 300);
 
 -- --------------------------------------------------------
 
@@ -87,7 +87,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
