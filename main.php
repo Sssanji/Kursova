@@ -11,7 +11,6 @@ require_once "vendor/connect.php";
 $products = mysqli_query ($connect, "SELECT * FROM `products`");
 $products = mysqli_fetch_all ($products);
 
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,6 +27,7 @@ $products = mysqli_fetch_all ($products);
       <th>Назва</th>
       <th>Опис</th>
       <th>Ціна</th>
+      <th>Категорія</th>
       <th>&#9998;</th>
       <th>&#10006;</th>
     </tr>
@@ -40,6 +40,7 @@ $products = mysqli_fetch_all ($products);
             <td><?= $product[1] ?></td>
             <td><?= $product[2] ?></td>
             <td><?= $product[3] ?></td> 
+            <td><?= $product[4] ?></td> 
             <td><a href="update.php?id=<?= $product[0] ?>">Оновити</a></td>
             <td><a href="vendor/delete.php?id=<?= $product[0] ?>">Видалити</a></td>
           </tr>
