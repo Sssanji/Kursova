@@ -13,8 +13,8 @@ $password = $_POST ['password'];
     $user = mysqli_fetch_assoc($check_user);
 
     $_SESSION['user'] = [
-      'id' => $user['id'],
-      'name' => $user['name']
+      'name' => $user['name'],
+      'status' => $user['status']
     ];
 
     header ("Location: ../main.php");

@@ -8,6 +8,9 @@ if (!$_SESSION['user']){
 
 
 require_once "vendor/connect.php";
+require_once "vendor/search.php";
+$category = mysqli_query ($connect, "SELECT * FROM `categories`");
+$category = mysqli_fetch_all ($category);
 $products = mysqli_query ($connect, "SELECT * FROM `products`");
 $products = mysqli_fetch_all ($products);
 
@@ -49,39 +52,57 @@ $products = mysqli_fetch_all ($products);
        ?>
   </table>
   <a href="vendor/exit.php">Вихід</a>
+  <a href="export.php">Експорт</a>
 
-  <form action='vendor/create.php' method='post'>
-    
-    <input type='text' name='title' placeholder='Назва'>
-    
-    <input type='text' name='des' placeholder='Опис'>
-    
-    <input type='number' name='price' placeholder='Ціна'>
 
-    <button type='submit'>Додати</button>
-  </form>
+        <h1>Додати товар</h1>
+        <form action='vendor/create.php' method='post'>
+          
+          <input type='text' name='title' placeholder='Назва'>
+          
+          <input type='text' name='des' placeholder='Опис'>
+          
+          <input type='number' name='price' placeholder='Ціна'>
+
+          <select name="categories">
+                <?php
+                foreach($category as $categorie) {
+                    ?>
+                            
+                            
+                            <option><?= $categorie[1] ?></option>
+                          
+                            <?php
+                  }
+                  ?>
+          </select>
+
+          <button type='submit'>Додати</button>
+        </form>
+        <h1>Додати категорію</h1>
+        <form action='vendor/create_category.php' method='post'>
+          
+          <input type='text' name='category_name' placeholder='Назва'>
+
+          <button type='submit'>Додати</button>
+        </form>
+
 
   <!-- <form action="vendor/search.php" method = 'post'> -->
     <form method = 'post'>
-        <p>Пошук товару<input type="text" name="search" > 
+        <h1>Пошук товару</h1>
+        <input type="text" name="search"> 
         <input type="submit" value="Пошук" name = "searchB">
-        </p>
+        
        
     </form>
     <?php 
-        if ($_POST['searchB']){
-          $inputSearch = $_POST['search'];
-          $result = mysqli_query ($connect, "SELECT * FROM `products` WHERE `title` = '$inputSearch'");
-          $row = mysqli_fetch_assoc($result);
-          $resulte = ("<h1>".$row['title']."</h1><p>".$row['description']."</p><p>".$row['price']."</p><br>");
+        
           echo ($resulte); 
-          
+          echo ($_SESSION['user']['status']); 
          
-      }
-      else if (!$_POST['searchB']){
-          $resulte = 3;
-          echo ($resulte);  
-      }
+      
+      
       
    
    ?>
