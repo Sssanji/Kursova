@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Час створення: Жов 17 2022 р., 01:27
--- Версія сервера: 8.0.30
--- Версія PHP: 7.2.34
+-- Время создания: Окт 20 2022 г., 07:30
+-- Версия сервера: 8.0.30
+-- Версия PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База даних: `bd`
+-- База данных: `bd`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблиці `categories`
+-- Структура таблицы `categories`
 --
 
 CREATE TABLE `categories` (
@@ -33,7 +33,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Дамп даних таблиці `categories`
+-- Дамп данных таблицы `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`) VALUES
@@ -55,7 +55,7 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблиці `products`
+-- Структура таблицы `products`
 --
 
 CREATE TABLE `products` (
@@ -68,19 +68,20 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп даних таблиці `products`
+-- Дамп данных таблицы `products`
 --
 
 INSERT INTO `products` (`id`, `title`, `description`, `price`, `categories`, `quantity`) VALUES
-(2, 'Товар 1', 'Опис 1', 1001, 'Катерогія 6', NULL),
-(3, 'Товар 3', 'Опис 3', 300, 'Категорія 1', NULL),
-(4, 'Товар 2', 'Опис 2 ', 500, 'Катерогія 4', NULL),
-(5, 'Товар 4', 'Опис 4', 444, 'Катерогія 5', NULL);
+(2, 'Товар 1', 'Опис 1', 1001, 'Катерогія 6', 20),
+(3, 'Товар 3', 'Опис 3', 300, 'Категорія 1', 50),
+(4, 'Товар 2', 'Опис 2 ', 500, 'Катерогія 4', 30),
+(5, 'Товар 4', 'Опис 4', 444, 'Катерогія 5', 10),
+(6, 'Товар 5', 'Опис 5', 300, 'Категорія 9', 500);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблиці `sales`
+-- Структура таблицы `sales`
 --
 
 CREATE TABLE `sales` (
@@ -94,7 +95,7 @@ CREATE TABLE `sales` (
 -- --------------------------------------------------------
 
 --
--- Структура таблиці `users`
+-- Структура таблицы `users`
 --
 
 CREATE TABLE `users` (
@@ -106,7 +107,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп даних таблиці `users`
+-- Дамп данных таблицы `users`
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `name`, `status`) VALUES
@@ -114,18 +115,18 @@ INSERT INTO `users` (`id`, `login`, `password`, `name`, `status`) VALUES
 (2, 'sanya', 'qwerty', 'Саня ', 'product_editor');
 
 --
--- Індекси збережених таблиць
+-- Индексы сохранённых таблиц
 --
 
 --
--- Індекси таблиці `categories`
+-- Индексы таблицы `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD KEY `name` (`name`);
 
 --
--- Індекси таблиці `products`
+-- Индексы таблицы `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
@@ -133,58 +134,58 @@ ALTER TABLE `products`
   ADD KEY `id` (`id`);
 
 --
--- Індекси таблиці `sales`
+-- Индексы таблицы `sales`
 --
 ALTER TABLE `sales`
   ADD PRIMARY KEY (`id_sales`),
   ADD KEY `id_product` (`id_product`);
 
 --
--- Індекси таблиці `users`
+-- Индексы таблицы `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT для збережених таблиць
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT для таблиці `categories`
+-- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT для таблиці `products`
+-- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT для таблиці `sales`
+-- AUTO_INCREMENT для таблицы `sales`
 --
 ALTER TABLE `sales`
   MODIFY `id_sales` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT для таблиці `users`
+-- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Обмеження зовнішнього ключа збережених таблиць
+-- Ограничения внешнего ключа сохраненных таблиц
 --
 
 --
--- Обмеження зовнішнього ключа таблиці `products`
+-- Ограничения внешнего ключа таблицы `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`categories`) REFERENCES `categories` (`name`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
--- Обмеження зовнішнього ключа таблиці `sales`
+-- Ограничения внешнего ключа таблицы `sales`
 --
 ALTER TABLE `sales`
   ADD CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;

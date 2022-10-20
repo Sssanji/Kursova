@@ -19,11 +19,25 @@ $products = mysqli_fetch_all ($products);
 <html>
 <head>
     <title>Main</title>
-    <link rel='stylesheet' type='text/css' href='main.css'>
-    
+    <link rel='stylesheet' type='text/css' href='style/style.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
+ 
   <h2>Ласкаво просимо: <?= $_SESSION['user']['name']?></h2>
+
+
+  <div class='menu'>
+      <a href='#'>Головна</a>
+      <a href='add.php'>Додати</a>
+      <a href='search.php'>Пошук</a>
+      <a href='#'>пап</a>
+      <a href="vendor/exit.php" style='color: red;'>Вихід</a>
+  </div>
+
+<div class='table'>
 <table>
     <tr>
       <th>id</th>
@@ -31,6 +45,7 @@ $products = mysqli_fetch_all ($products);
       <th>Опис</th>
       <th>Ціна</th>
       <th>Категорія</th>
+      <th>Кількість</th>
       <th>&#9998;</th>
       <th>&#10006;</th>
     </tr>
@@ -44,6 +59,7 @@ $products = mysqli_fetch_all ($products);
             <td><?= $product[2] ?></td>
             <td><?= $product[3] ?></td> 
             <td><?= $product[4] ?></td> 
+            <td><?= $product[5] ?></td> 
             <td><a href="update.php?id=<?= $product[0] ?>">Оновити</a></td>
             <td><a href="vendor/delete.php?id=<?= $product[0] ?>">Видалити</a></td>
           </tr>
@@ -51,42 +67,11 @@ $products = mysqli_fetch_all ($products);
       }
        ?>
   </table>
+    </div>
   <a href="vendor/exit.php">Вихід</a>
   <a href="export.php">Експорт</a>
 
-
-        <h1>Додати товар</h1>
-        <form action='vendor/create.php' method='post'>
-          
-          <input type='text' name='title' placeholder='Назва'>
-          
-          <input type='text' name='des' placeholder='Опис'>
-          
-          <input type='number' name='price' placeholder='Ціна'>
-
-          <select name="categories">
-                <?php
-                foreach($category as $categorie) {
-                    ?>
-                            
-                            
-                            <option><?= $categorie[1] ?></option>
-                          
-                            <?php
-                  }
-                  ?>
-          </select>
-
-          <button type='submit'>Додати</button>
-        </form>
-        <h1>Додати категорію</h1>
-        <form action='vendor/create_category.php' method='post'>
-          
-          <input type='text' name='category_name' placeholder='Назва'>
-
-          <button type='submit'>Додати</button>
-        </form>
-
+        
 
   <!-- <form action="vendor/search.php" method = 'post'> -->
     <form method = 'post'>
@@ -99,12 +84,13 @@ $products = mysqli_fetch_all ($products);
     <?php 
         
           echo ($resulte); 
-          echo ($_SESSION['user']['status']); 
+          
          
       
       
       
    
    ?>
+ 
 </body>
 </html>
