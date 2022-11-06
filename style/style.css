@@ -67,3 +67,10 @@ td:nth-child(8) > a {
     justify-content: center;
     margin-top: 100px;
 }
+
+.sosi{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
