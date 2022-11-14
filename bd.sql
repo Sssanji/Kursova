@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 14 2022 г., 10:50
+-- Время создания: Ноя 14 2022 г., 16:58
 -- Версия сервера: 8.0.30
 -- Версия PHP: 7.2.34
 
@@ -51,6 +51,30 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 (4, 'Катерогія 4'),
 (5, 'Катерогія 5'),
 (6, 'Катерогія 6');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `orderr`
+--
+
+CREATE TABLE `orderr` (
+  `id` int DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `price` int DEFAULT NULL,
+  `quantity` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `orderr`
+--
+
+INSERT INTO `orderr` (`id`, `title`, `price`, `quantity`) VALUES
+(4, 'none', 500, 66),
+(6, 'Товар 5', 300, 66),
+(5, 'Товар 4', 444, 66),
+(2, 'Товар 1', 1001, 66),
+(2, 'Товар 1', 1001, 66);
 
 -- --------------------------------------------------------
 

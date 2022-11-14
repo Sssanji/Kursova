@@ -46,16 +46,15 @@ echo '</pre>';
 
   
   <div class='table'>
+  <form action="vendor/sale.php" method="post">
     <h2>Поточне замовлення</h2>
 <table>
     <tr>
       <th>id</th>
       <th>Назва</th>
-      <th>Опис</th>
       <th>Ціна</th>
-      <th>Категорія</th>
       <th>Кількість</th>
-      <!-- <th>&#43;</th> -->
+      <th>&#10006;</th>
     </tr>
 
     <?php
@@ -65,15 +64,16 @@ echo '</pre>';
             <td><?= $order_products[0] ?></td>
             <td><?= $order_products[1] ?></td>
             <td><?= $order_products[2] ?></td>
-            <td><?= $order_products[3] ?></td> 
-            <td><?= $order_products[4] ?></td> 
-            <td><?= $order_products[5] ?></td> 
-            <!-- <td><a href="vendor/order.php?id=<?= $product[0] ?>">Додати до замовлення</a></td> -->
+            <td><input type="number" name="quantity" value="<?= $product['quantity'] ?>"></td> 
+            <td><a href="vendor/delete.php?id=<?= $product[0] ?>">Видалити</a></td>
           </tr>
         <?php
       }
        ?>
   </table>
+  
+  <button type="submit">Оформити замовлення</button>
+  </form>
     </div>
 
 
