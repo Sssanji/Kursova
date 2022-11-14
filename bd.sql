@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 14 2022 г., 16:58
+-- Время создания: Ноя 14 2022 г., 20:50
 -- Версия сервера: 8.0.30
 -- Версия PHP: 7.2.34
 
@@ -60,7 +60,7 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 
 CREATE TABLE `orderr` (
   `id` int DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `price` int DEFAULT NULL,
   `quantity` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -70,11 +70,9 @@ CREATE TABLE `orderr` (
 --
 
 INSERT INTO `orderr` (`id`, `title`, `price`, `quantity`) VALUES
-(4, 'none', 500, 66),
-(6, 'Товар 5', 300, 66),
-(5, 'Товар 4', 444, 66),
-(2, 'Товар 1', 1001, 66),
-(2, 'Товар 1', 1001, 66);
+(2, 'Товар 1', 1001, 40),
+(3, 'Товар 3', 300, 20),
+(6, 'Товар 5', 300, 500);
 
 -- --------------------------------------------------------
 
@@ -109,12 +107,11 @@ INSERT INTO `products` (`id`, `title`, `description`, `price`, `categories`, `qu
 --
 
 CREATE TABLE `sales` (
-  `id_sales` int NOT NULL,
-  `id_product` int NOT NULL,
-  `date` date NOT NULL,
-  `quantity` int NOT NULL,
-  `sales_price` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_sale` int NOT NULL,
+  `title products and quantity` text COLLATE utf8mb4_unicode_ci,
+  `sale_price` int DEFAULT NULL,
+  `date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -161,8 +158,7 @@ ALTER TABLE `products`
 -- Индексы таблицы `sales`
 --
 ALTER TABLE `sales`
-  ADD PRIMARY KEY (`id_sales`),
-  ADD KEY `id_product` (`id_product`);
+  ADD PRIMARY KEY (`id_sale`);
 
 --
 -- Индексы таблицы `users`
@@ -190,7 +186,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT для таблицы `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id_sales` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sale` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
@@ -207,12 +203,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`categories`) REFERENCES `categories` (`name`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Ограничения внешнего ключа таблицы `sales`
---
-ALTER TABLE `sales`
-  ADD CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

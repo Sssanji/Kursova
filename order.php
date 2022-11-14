@@ -28,9 +28,9 @@ echo '</pre>';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+    
 </head>
 <body>
- 
   <h2>Ласкаво просимо: <?= $_SESSION['user']['name']?></h2>
 
 
@@ -64,8 +64,8 @@ echo '</pre>';
             <td><?= $order_products[0] ?></td>
             <td><?= $order_products[1] ?></td>
             <td><?= $order_products[2] ?></td>
-            <td><input type="number" name="quantity" value="<?= $product['quantity'] ?>"></td> 
-            <td><a href="vendor/delete.php?id=<?= $product[0] ?>">Видалити</a></td>
+            <td><?= $order_products[3] ?></td> 
+            <td><a href="update_order.php?id=<?= $order_products[0] ?>">Редагувати</a></td>
           </tr>
         <?php
       }
@@ -80,6 +80,7 @@ echo '</pre>';
 
 <div class='table'>
 <h2>Перелік товарів</h2>
+<form method="post">
 <table>
     <tr>
       <th>id</th>
@@ -107,13 +108,11 @@ echo '</pre>';
       }
        ?>
   </table>
+    </form>
     </div>
   
   <!-- <a href="export.php">Експорт</a> -->
 
-        
-
- 
-    
+</div>
 </body>
 </html>
