@@ -6,18 +6,17 @@ if (!$_SESSION['user']){
   header('Location: index.php');
 }
 
-
+require_once "vendor/search.php";
 require_once "vendor/connect.php";
 require_once "vendor/order.php";
 $category = mysqli_query ($connect, "SELECT * FROM `categories`");
 $category = mysqli_fetch_all ($category);
 $products = mysqli_query ($connect, "SELECT * FROM `products`");
 $products = mysqli_fetch_all ($products);
+$sellings = mysqli_query ($connect, "SELECT * FROM `sales`");
+$sellings = mysqli_fetch_all ($sellings);
 
 
-echo '<pre>';
-print_r ($order_product);
-echo '</pre>';
 
 ?>
 <!DOCTYPE html>
@@ -42,8 +41,32 @@ echo '</pre>';
       <a href="vendor/exit.php" style='color: red;'>Вихід</a>
   </div>
 
+  <div class='table'>
+    <h2>Попередні замовлення</h2>
+<table>
+    <tr>
+      <th>id</th>
+      <th>Назва та Кількість</th>
+      <th>Ціна замовлення</th>
+      <th>Дата замовлення</th>
+      <th>&#9998;</th>
+    </tr>
 
-
+    <?php
+    foreach($sellings as $selling) {
+        ?>
+          <tr>
+            <td><?= $selling[0] ?></td>
+            <td><?= $selling[1] ?></td>
+            <td><?= $selling[2] ?></td>
+            <td><?= $selling[3] ?></td> 
+            <td><a href="update_sale.php?id=<?= $selling[0] ?>">Редагувати</a></td>
+          </tr>
+        <?php
+      }
+       ?>
+  </table>
+    </div>
   
   <div class='table'>
   <form action="vendor/sale.php" method="post">
@@ -54,7 +77,7 @@ echo '</pre>';
       <th>Назва</th>
       <th>Ціна</th>
       <th>Кількість</th>
-      <th>&#10006;</th>
+      <th>&#9998;</th>
     </tr>
 
     <?php
@@ -76,6 +99,47 @@ echo '</pre>';
   </form>
     </div>
 
+
+    <div class='search'>
+    <form method = 'post'>
+       
+        <h1>Пошук товару</h1>
+        <input type="text" name="search"> 
+        <input type="submit" value="Пошук" name = "searchB">
+     </form>
+    </div>
+
+
+
+    <div class='table'>
+<table>
+    <tr>
+      <th>id</th>
+      <th>Назва</th>
+      <th>Опис</th>
+      <th>Ціна</th>
+      <th>Категорія</th>
+      <th>Кількість</th>
+      <th>&#43;</th>
+    </tr>
+
+    <?php
+    foreach($row as $resulte) {
+        ?>
+          <tr>
+            <td><?= $resulte[0] ?></td>
+            <td><?= $resulte[1] ?></td>
+            <td><?= $resulte[2] ?></td>
+            <td><?= $resulte[3] ?></td> 
+            <td><?= $resulte[4] ?></td> 
+            <td><?= $resulte[5] ?></td> 
+            <td><a href="order.php?id=<?= $resulte[0] ?>">Додати до замовлення</a></td>
+          </tr>
+        <?php
+      }
+       ?>
+  </table>
+    </div>
 
 
 <div class='table'>

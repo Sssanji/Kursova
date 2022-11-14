@@ -11,38 +11,22 @@ foreach($sale as $sales) {
 }
 
  $product_sale = (implode(", ", $product_sale));
- $price_sale = array_sum($price_sale);
- $quantity_sale = (implode("шт, ", $quantity_sale));
- $title_quantity = $product_sale.' : '.$quantity_sale;
- echo ($qwe);
- $sale_date = date('Y-m-d');
- echo ($sale_date);
-// mysqli_query($connect, "INSERT INTO `sales` (`id_sale`, `title products and quantity`, `sale_price`, `price`, `date`) VALUES (NULL, '$title_quantity', '$price_sale', '$price')");
 
+ $price_result = [];
 
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    
-</head>
-<body>
-
-  <?php
-
+ for($i = 0; $i < sizeof($price_sale); $i++)
+ {
+     $price_result[$i] = $price_sale[$i] * $quantity_sale[$i];
+ }
+ $price_sale = array_sum($price_result);
  
-   
-    // $merge = array_merge($product_sale, $price_sale, $quantity_sale);
-    // $merge = array_combine($product_sale, $quantity_sale);
 
-    // echo ($merge);
+$quantity_sale = (implode("шт, ", $quantity_sale));
+$title_quantity = $product_sale.' : '.$quantity_sale;
 
-    // echo '<pre>';
-    // print_r ($merge);
-    // echo '</pre>';
-  ?>
+ $sale_date = date('Y-m-d');
 
-
-</body>
-</html>
+ mysqli_query($connect, "INSERT INTO `sales` (`id_sale`, `title products and quantity`, `sale_price`, `date`) VALUES (NULL, '$title_quantity', '$price_sale', '$sale_date')");
+ mysqli_query($connect, "TRUNCATE TABLE `bd`.`orderr`");
+ header('Location: ../order.php');
+?>

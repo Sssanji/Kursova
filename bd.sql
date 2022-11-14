@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 14 2022 г., 20:50
+-- Время создания: Ноя 14 2022 г., 22:53
 -- Версия сервера: 8.0.30
 -- Версия PHP: 7.2.34
 
@@ -70,9 +70,8 @@ CREATE TABLE `orderr` (
 --
 
 INSERT INTO `orderr` (`id`, `title`, `price`, `quantity`) VALUES
-(2, 'Товар 1', 1001, 40),
-(3, 'Товар 3', 300, 20),
-(6, 'Товар 5', 300, 500);
+(2, 'Товар 1', 1001, 20),
+(2, 'Товар 1', 1001, 20);
 
 -- --------------------------------------------------------
 
@@ -108,10 +107,18 @@ INSERT INTO `products` (`id`, `title`, `description`, `price`, `categories`, `qu
 
 CREATE TABLE `sales` (
   `id_sale` int NOT NULL,
-  `title products and quantity` text COLLATE utf8mb4_unicode_ci,
+  `title products and quantity` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `sale_price` int DEFAULT NULL,
   `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `sales`
+--
+
+INSERT INTO `sales` (`id_sale`, `title products and quantity`, `sale_price`, `date`) VALUES
+(1, 'Товар 1, Товар 3, Товар 5 : 40шт, 20шт, 500', 196040, '2022-11-14'),
+(2, 'Товар 5, none, Товар 4 : 23шт, 19шт, 10', 5000, '2022-11-15');
 
 -- --------------------------------------------------------
 
@@ -186,7 +193,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT для таблицы `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id_sale` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sale` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
