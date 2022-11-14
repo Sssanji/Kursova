@@ -8,11 +8,16 @@ if (!$_SESSION['user']){
 
 
 require_once "vendor/connect.php";
-
+require_once "vendor/order.php";
 $category = mysqli_query ($connect, "SELECT * FROM `categories`");
 $category = mysqli_fetch_all ($category);
 $products = mysqli_query ($connect, "SELECT * FROM `products`");
 $products = mysqli_fetch_all ($products);
+
+
+echo '<pre>';
+print_r ($order_product);
+echo '</pre>';
 
 ?>
 <!DOCTYPE html>
@@ -37,7 +42,11 @@ $products = mysqli_fetch_all ($products);
       <a href="vendor/exit.php" style='color: red;'>Вихід</a>
   </div>
 
-<div class='table'>
+
+
+  
+  <div class='table'>
+    <h2>Поточне замовлення</h2>
 <table>
     <tr>
       <th>id</th>
@@ -46,8 +55,40 @@ $products = mysqli_fetch_all ($products);
       <th>Ціна</th>
       <th>Категорія</th>
       <th>Кількість</th>
-      <th>&#9998;</th>
-      <th>&#10006;</th>
+      <!-- <th>&#43;</th> -->
+    </tr>
+
+    <?php
+    foreach($order_product as $order_products) {
+        ?>
+          <tr>
+            <td><?= $order_products[0] ?></td>
+            <td><?= $order_products[1] ?></td>
+            <td><?= $order_products[2] ?></td>
+            <td><?= $order_products[3] ?></td> 
+            <td><?= $order_products[4] ?></td> 
+            <td><?= $order_products[5] ?></td> 
+            <!-- <td><a href="vendor/order.php?id=<?= $product[0] ?>">Додати до замовлення</a></td> -->
+          </tr>
+        <?php
+      }
+       ?>
+  </table>
+    </div>
+
+
+
+<div class='table'>
+<h2>Перелік товарів</h2>
+<table>
+    <tr>
+      <th>id</th>
+      <th>Назва</th>
+      <th>Опис</th>
+      <th>Ціна</th>
+      <th>Категорія</th>
+      <th>Кількість</th>
+      <th>&#43;</th>
     </tr>
 
     <?php
@@ -60,8 +101,7 @@ $products = mysqli_fetch_all ($products);
             <td><?= $product[3] ?></td> 
             <td><?= $product[4] ?></td> 
             <td><?= $product[5] ?></td> 
-            <td><a href="update.php?id=<?= $product[0] ?>">Оновити</a></td>
-            <td><a href="vendor/delete.php?id=<?= $product[0] ?>">Видалити</a></td>
+            <td><a href="order.php?id=<?= $product[0] ?>">Додати до замовлення</a></td>
           </tr>
         <?php
       }

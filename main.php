@@ -14,6 +14,9 @@ $category = mysqli_fetch_all ($category);
 $products = mysqli_query ($connect, "SELECT * FROM `products`");
 $products = mysqli_fetch_all ($products);
 
+echo '<pre>';
+print_r ($products);
+echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html>
