@@ -31,9 +31,9 @@ $products = mysqli_fetch_all ($products);
 
   <div class='menu'>
       <a href='main.php'>Головна</a>
-      <a href='#'>Додати</a>
-      <a href='#'>ппап</a>
-      <a href='#'>пап</a>
+      <a href='add.php'>Додати</a>
+      <a href='search.php'>Пошук</a>
+      <a href='order.php'>Замовлення</a>
       <a href="vendor/exit.php" style='color: red;'>Вихід</a>
   </div>
 

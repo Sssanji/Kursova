@@ -8,14 +8,17 @@ if (!$_SESSION['user']){
 
 
 require_once "vendor/connect.php";
-require_once "vendor/search.php";
 
+$category = mysqli_query ($connect, "SELECT * FROM `categories`");
+$category = mysqli_fetch_all ($category);
+$products = mysqli_query ($connect, "SELECT * FROM `products`");
+$products = mysqli_fetch_all ($products);
 
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Search</title>
+    <title>Order</title>
     <link rel='stylesheet' type='text/css' href='style/style.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,19 +37,7 @@ require_once "vendor/search.php";
       <a href="vendor/exit.php" style='color: red;'>Вихід</a>
   </div>
 
-
-     <div class='search'>
-    <form method = 'post'>
-       
-        <h1>Пошук товару</h1>
-        <input type="text" name="search"> 
-        <input type="submit" value="Пошук" name = "searchB">
-     </form>
-    </div>
-
-
-
-    <div class='table'>
+<div class='table'>
 <table>
     <tr>
       <th>id</th>
@@ -60,23 +51,29 @@ require_once "vendor/search.php";
     </tr>
 
     <?php
-    foreach($row as $resulte) {
+    foreach($products as $product) {
         ?>
           <tr>
-            <td><?= $resulte[0] ?></td>
-            <td><?= $resulte[1] ?></td>
-            <td><?= $resulte[2] ?></td>
-            <td><?= $resulte[3] ?></td> 
-            <td><?= $resulte[4] ?></td> 
-            <td><?= $resulte[5] ?></td> 
-            <td><a href="update.php?id=<?= $resulte[0] ?>">Оновити</a></td>
-            <td><a href="vendor/delete.php?id=<?= $resulte[0] ?>">Видалити</a></td>
+            <td><?= $product[0] ?></td>
+            <td><?= $product[1] ?></td>
+            <td><?= $product[2] ?></td>
+            <td><?= $product[3] ?></td> 
+            <td><?= $product[4] ?></td> 
+            <td><?= $product[5] ?></td> 
+            <td><a href="update.php?id=<?= $product[0] ?>">Оновити</a></td>
+            <td><a href="vendor/delete.php?id=<?= $product[0] ?>">Видалити</a></td>
           </tr>
         <?php
       }
        ?>
   </table>
     </div>
+  
+  <!-- <a href="export.php">Експорт</a> -->
 
- </body>
- </html>
+        
+
+ 
+    
+</body>
+</html>

@@ -18,7 +18,10 @@ if (!$_SESSION['user']){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+    <link rel='stylesheet' type='text/css' href='style/style.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
   <title>Update</title>
 </head>
 <body>
@@ -27,6 +30,7 @@ if (!$_SESSION['user']){
  
 
   <h2>Оновити</h2>
+  <div class = 'update'>
   <form action="vendor/update.php" method="post">
     <input type="hidden" name="id" value="<?= $product['id'] ?>">
     <p>Назва</p>
@@ -52,29 +56,13 @@ if (!$_SESSION['user']){
     <button type="submit">Оновити</button>
   </form>
   
+    </div>
 
 
 
 
 
-
-  <table>
-    <tr>
-      <th>id</th>
-      <th>Назва</th>
-    </tr>
-
-    <?php
-    foreach($category as $categorie) {
-        ?>
-          <tr>
-            <td><?= $categorie[0] ?></td>
-            <td><?= $categorie[1] ?></td>
-          </tr>
-        <?php
-      }
-       ?>
-  </table>
+  
 
 
 </body>

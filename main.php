@@ -23,6 +23,7 @@ $products = mysqli_fetch_all ($products);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="image/db.png">
 </head>
 <body>
  
@@ -30,10 +31,10 @@ $products = mysqli_fetch_all ($products);
 
 
   <div class='menu'>
-      <a href='#'>Головна</a>
+      <a href='main.php'>Головна</a>
       <a href='add.php'>Додати</a>
       <a href='search.php'>Пошук</a>
-      <a href='#'>пап</a>
+      <a href='order.php'>Замовлення</a>
       <a href="vendor/exit.php" style='color: red;'>Вихід</a>
   </div>
 
@@ -68,8 +69,8 @@ $products = mysqli_fetch_all ($products);
        ?>
   </table>
     </div>
-  <a href="vendor/exit.php">Вихід</a>
-  <a href="export.php">Експорт</a>
+  
+  <!-- <a href="export.php">Експорт</a> -->
 
         
 

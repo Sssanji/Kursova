@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 20 2022 г., 07:30
+-- Время создания: Ноя 14 2022 г., 10:50
 -- Версия сервера: 8.0.30
 -- Версия PHP: 7.2.34
 
@@ -63,7 +63,7 @@ CREATE TABLE `products` (
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `price` int DEFAULT NULL,
-  `categories` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `categories` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `quantity` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -72,9 +72,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `title`, `description`, `price`, `categories`, `quantity`) VALUES
-(2, 'Товар 1', 'Опис 1', 1001, 'Катерогія 6', 20),
+(2, 'Товар 1', 'Опис 1', 1001, 'Категорія 1', 20),
 (3, 'Товар 3', 'Опис 3', 300, 'Категорія 1', 50),
-(4, 'Товар 2', 'Опис 2 ', 500, 'Катерогія 4', 30),
+(4, 'none', 'Опис 2 ', 500, 'Категорія 1', 30),
 (5, 'Товар 4', 'Опис 4', 444, 'Катерогія 5', 10),
 (6, 'Товар 5', 'Опис 5', 300, 'Категорія 9', 500);
 
@@ -100,10 +100,10 @@ CREATE TABLE `sales` (
 
 CREATE TABLE `users` (
   `id` int NOT NULL,
-  `login` text COLLATE utf8mb4_unicode_ci,
-  `password` text COLLATE utf8mb4_unicode_ci,
-  `name` text COLLATE utf8mb4_unicode_ci,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `login` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `password` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
