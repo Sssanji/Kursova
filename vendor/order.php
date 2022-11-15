@@ -5,7 +5,7 @@ require_once 'connect.php';
 // $order_product_query = mysqli_query($connect, "SELECT * FROM `products` WHERE `products`.`id` = '$id_order_product'");
 // $order_product_add = mysqli_fetch_all ($order_product_query);
 // $order_product = $order_product_add;
-$quantity = $_POST['quantity'];
+
 
 
 mysqli_query($connect, "INSERT INTO `orderr`(`id`, `title`, `price`, `quantity`) SELECT `id`, `title`, `price`, `quantity` FROM `products` WHERE `products`.`id` = '$id_order_product'") ;

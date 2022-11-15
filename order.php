@@ -6,6 +6,12 @@ if (!$_SESSION['user']){
   header('Location: index.php');
 }
 
+if ($_SESSION['user']['status'] == "product_editor"){
+  die("У вас недостатньо прав! Зверніться до адміністратора");
+}
+
+
+
 require_once "vendor/search.php";
 require_once "vendor/connect.php";
 require_once "vendor/order.php";
